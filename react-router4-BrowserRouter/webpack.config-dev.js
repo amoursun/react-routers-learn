@@ -5,7 +5,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var host = '127.0.0.1';
-var port = '9900';
+var port = '4000';
 
 module.exports = {
     //页面入口文件配置
