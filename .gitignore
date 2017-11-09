@@ -2,8 +2,6 @@
 # react-router3-hashHistory
 /react-router3-hashHistory/.idea
 #.gitignore
-/react-router3-hashHistory/ci18n
-/react-router3-hashHistory/json-test
 # dependencies
 /react-router3-hashHistory/node_modules
 
