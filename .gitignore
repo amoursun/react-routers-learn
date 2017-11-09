@@ -1,0 +1,77 @@
+.idea
+# react-router3-hashHistory
+/react-router3-hashHistory/.idea
+#.gitignore
+/react-router3-hashHistory/ci18n
+/react-router3-hashHistory/json-test
+# dependencies
+/react-router3-hashHistory/node_modules
+
+# testing
+/react-router3-hashHistory/coverage
+
+# production
+/react-router3-hashHistory/build
+
+# misc
+/react-router3-hashHistory/.DS_Store
+/react-router3-hashHistory/.env.local
+/react-router3-hashHistory/.env.development.local
+/react-router3-hashHistory/.env.test.local
+/react-router3-hashHistory/.env.production.local
+
+/react-router3-hashHistory/npm-debug.log*
+/react-router3-hashHistory/yarn-debug.log*
+/react-router3-hashHistory/yarn-error.log*
+
+# react-router4-BrowserRouter
+
+/react-router4-BrowserRouter/.idea
+#.gitignore
+/react-router4-BrowserRouter/ci18n
+/react-router4-BrowserRouter/json-test
+# dependencies
+/react-router4-BrowserRouter/node_modules
+
+# testing
+/react-router4-BrowserRouter/coverage
+
+# production
+/react-router4-BrowserRouter/build
+
+# misc
+/react-router4-BrowserRouter/.DS_Store
+/react-router4-BrowserRouter/.env.local
+/react-router4-BrowserRouter/.env.development.local
+/react-router4-BrowserRouter/.env.test.local
+/react-router4-BrowserRouter/.env.production.local
+
+/react-router4-BrowserRouter/npm-debug.log*
+/react-router4-BrowserRouter/yarn-debug.log*
+/react-router4-BrowserRouter/yarn-error.log*
+
+# react-router4-HashRouter
+
+/react-router4-HashRouter/.idea
+#.gitignore
+/react-router4-HashRouter/ci18n
+/react-router4-HashRouter/json-test
+# dependencies
+/react-router4-HashRouter/node_modules
+
+# testing
+/react-router4-HashRouter/coverage
+
+# production
+/react-router4-HashRouter/build
+
+# misc
+/react-router4-HashRouter/.DS_Store
+/react-router4-HashRouter/.env.local
+/react-router4-HashRouter/.env.development.local
+/react-router4-HashRouter/.env.test.local
+/react-router4-HashRouter/.env.production.local
+
+/react-router4-HashRouter/npm-debug.log*
+/react-router4-HashRouter/yarn-debug.log*
+/react-router4-HashRouter/yarn-error.log*
