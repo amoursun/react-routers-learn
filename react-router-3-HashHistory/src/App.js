@@ -13,27 +13,12 @@ class App extends Component {
                 <ul className="nav">
                     <li>
                         <IndexLink to="/" activeClassName="active">
-                            Home
-                        </IndexLink>
-                    </li>
-                    <li>
-                        <Link to="/about" activeStyle={{color: 'green'}}>
-                            About
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/user" activeStyle={{color: 'red'}}>
                             User
-                        </Link>
+                        </IndexLink>
                     </li>
                     <li>
                         <Link to="/contacts" activeClassName="active">
                             Contacts
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/cast" activeStyle={{color: 'yellow'}}>
-                            Cast
                         </Link>
                     </li>
                     <li>
@@ -44,16 +29,6 @@ class App extends Component {
                     <li>
                         <Link to="/comments" activeStyle={{color: 'coral'}}>
                             Comments
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/brothernews" activeStyle={{color: '#fd5624'}}>
-                            BrotherNews
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/newShopTable" activeStyle={{color: '#1d5624'}}>
-                            NewShopTable
                         </Link>
                     </li>
                 </ul>

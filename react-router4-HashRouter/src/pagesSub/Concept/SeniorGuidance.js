@@ -63,6 +63,7 @@ class SeniorGuidance extends Component {
     }
 
     componentWillMount() {
+        console.log(history)
         let title = window.location.hash;
 
         this.state.names.map((name, index) => {
