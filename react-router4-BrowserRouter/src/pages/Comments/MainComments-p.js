@@ -3,9 +3,6 @@ import './MainComments.less';
 import CommentsCenterOne from './UnReduxComments/CommentsCenterOne';
 import CommentsCenterTwo from './ReduxComments/CommentsCenterTwo';
 import history from './../../history/history';
-import {
-    Link
-} from 'react-router-dom';
 
 
 class ShowComment extends Component {
@@ -22,9 +19,13 @@ class ShowComment extends Component {
     }
 }
 
-const List = (props) => (
-    <li onClick={props.handleSelect.bind(this, props.id)}><Link to={`/comments/${props.value.name}`} style={props.isSelect ? {color: '#979c12'} : {}}>{props.value.content}</Link></li>
-);
+function List(props) {
+    return <li
+        onClick={props.handleSelect.bind(this, props.id)}
+        style={props.isSelect ? {color: '#979c12'} : {}}>
+            {props.value}
+        </li>;
+}
 
 const reduxCodes = [
     {id: 1, content: '无 Redux 状态管理', name: 'unredux'},
@@ -44,28 +45,27 @@ class MainComments extends Component {
 
     componentWillMount() {
         const { reduxs } = this.state;
-        let name = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
+        let name = window.location.hash;
         let id = '';
 
         reduxs.map((redux) => {
             redux.select = '';
-            if (name === redux.name) {
+            if (name.indexOf(redux.name) > -1) {
                 redux.select = true;
                 id = redux.id;
                 this.setState({ id: redux.id });
             }
-        });
+        })
 
-        if (!id) {
-            reduxs[0].select = true;
-            history.push(`/comments/${reduxs[0].name}`);
-        }
+        id ? '' : reduxs[0].select = true;
+        id ? '' : history.push(`/comments/${reduxs[0].name}`);
     }
 
     handleSelect(index) {
         this.state.reduxs.map((redux) => {
             if (redux.id === index) {
                 redux.select = true;
+                history.push(`/comments/${redux.name}`);
             }
             else {
                 redux.select = '';
@@ -88,11 +88,10 @@ class MainComments extends Component {
                             <List key={redux.id}
                                   id={redux.id}
                                   isSelect={redux.select}
-                                  handleSelect={this.handleSelect} value={redux} />
+                                  handleSelect={this.handleSelect} value={redux.content} />
                         )}
                     </ul>
                 </div>
-
                 <ShowComment id={this.state.id}/>
                 <div className="clear"></div>
             </div>

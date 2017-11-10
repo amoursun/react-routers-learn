@@ -1,14 +1,21 @@
 import React, {Component} from 'react';
-import { createHashHistory } from 'history';
-const history = createHashHistory();
+import history from './../../history/history';
+import {
+    Link
+} from 'react-router-dom';
 
-function ListItem(props) {
-    return <li
-                onClick={props.changeItem.bind(this,props.id)}
-                style={props.isSelect ? {color: '#00ff3d'} : {}}>
-                {props.value}
-            </li>
-};
+
+// function ListItem(props) {
+//     return <li
+//                 onClick={props.changeItem.bind(this,props.value.id)}
+//                 style={props.isSelect ? {color: '#00ff3d'} : {}}>
+//                 {props.value.name}
+//             </li>
+// };
+
+const ListItem = (props) => (
+    <li onClick={props.changeItem.bind(this,props.value.id)}><Link to={`/concept/${props.value.title}`} style={props.isSelect ? {color: '#00ff3d'} : {}}>{props.value.name}</Link></li>
+);
 
 class GuidanceLists extends Component {
     constructor(props) {
@@ -28,8 +35,7 @@ class GuidanceLists extends Component {
             <ul className="side-ul">
                 {names.map((name) =>
                     <ListItem key={name.id}
-                              id={name.id}
-                              value={name.name}
+                              value={name}
                               isSelect={name.select}
                               changeItem={this.handleListItemChange}/>
                 )}
@@ -63,11 +69,11 @@ class SeniorGuidance extends Component {
     }
 
     componentWillMount() {
-        let title = window.location.hash;
+        let title = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
 
         this.state.names.map((name, index) => {
             delete name.select;
-            if (title.indexOf(name.title) > -1) {
+            if (title === name.title) {
                 name.select = true;
                 this.props.selectChange(index + 1);
             }
@@ -79,7 +85,6 @@ class SeniorGuidance extends Component {
         this.state.names.map((nameSelect, index) => {
             if (key - 1 === index) {
                 nameSelect.select = true;
-                history.push(`/concept/${nameSelect.title}`);
             }
             else {
                 delete nameSelect.select;

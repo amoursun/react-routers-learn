@@ -1,25 +1,34 @@
-var webpack = require('webpack');
-var path = require('path');
-var fs = require('fs');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
+const path = require('path');
+const fs = require('fs');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var host = '127.0.0.1';
-var port = '4000';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const host = '127.0.0.1';
+const port = '4000';
 
 module.exports = {
     //页面入口文件配置
     entry: [
-        "babel-polyfill",
+        // "babel-polyfill",
         path.resolve(__dirname, "./src/index.js")
     ],
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/' //添加这个解决路由刷新404问题(browserRouter)
     },
     module: {
         //加载器配置
         loaders: [
+            {
+                test: /\.es6$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015']
+                }
+            },
             {
                 test: /\.css$/,
                 loader: 'style-loader!css-loader?minimize'
@@ -94,10 +103,11 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         // JS 压缩插件
         // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {
-        //         warnings: false
-        //     }
+        //     // compress: {
+        //     //     warnings: false
+        //     // }
         // }),
+        // new UglifyJSPlugin(),
         // 生成最终HTML
         new HtmlWebpackPlugin({
             filename: 'index.html',
@@ -126,11 +136,22 @@ module.exports = {
         port: port,
         // gzip
         compress: true,
-        contentBase: path.join(__dirname, "build"),
+        contentBase: path.join(__dirname, 'build'),
         hot: true,
         progress: true,
         // 不跳转
-        historyApiFallback: false,
+        historyApiFallback: true,
+        // 或
+        // historyApiFallback:{
+        //     index:'build/index.html'
+        // },
+        // 只能改变单个路由嵌套刷新问题, 得每个都写
+        // proxy: {
+        //     "/concept/": {
+        //         target: `http://${host}:${port}`,
+        //         pathRewrite: { '^/concept': '/' },
+        //     }
+        // },
         // 实时刷新
         inline: true,
         // 隐藏 webpack 包 bundle 信息，错误和警告仍然会显示。
